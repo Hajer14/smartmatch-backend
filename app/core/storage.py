@@ -1,4 +1,7 @@
-# Stockage global pour le MVP
+# app/core/storage.py
 
-cvs = []
+# Liste des CV (ou chemins si tu stockes sur disque)
+cvs_paths = []
+
+# Offre d'emploi actuelle
 job_description = ""

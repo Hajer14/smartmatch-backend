@@ -1,15 +1,17 @@
+# app/routes/match.py
 from fastapi import APIRouter
-from app.routes.cv import cvs
-from app.routes.job import job_description
+from app.core import storage
 from app.services.matcher import calculate_matching
 
 router = APIRouter(prefix="/match", tags=["Matching"])
 
 @router.get("/")
 def match():
-    if not cvs:
+    if not storage.cvs_paths:
         return {"error": "Aucun CV uploadé"}
-    if not job_description:
+
+    if not storage.job_description:
         return {"error": "Aucune offre ajoutée"}
-    results = calculate_matching(cvs, job_description)
+
+    results = calculate_matching(storage.cvs_paths, storage.job_description)
     return results

@@ -1,7 +1,8 @@
+# app/routes/cv.py
 from fastapi import APIRouter, UploadFile, File
+from app.core import storage
 
 router = APIRouter(prefix="/cv", tags=["CV"])
-cvs = []
 
 @router.post("/upload")
 async def upload_cv(file: UploadFile = File(...)):
@@ -10,5 +11,8 @@ async def upload_cv(file: UploadFile = File(...)):
         text = content.decode("utf-8", errors="ignore")
     except:
         return {"error": "Impossible de lire le fichier"}
-    cvs.append(text)
-    return {"message": "CV ajouté avec succès", "total_cvs": len(cvs)}
+
+    # Sauvegarde dans le storage central
+    storage.cvs_paths.append(text)
+
+    return {"message": "CV ajouté avec succès", "total_cvs": len(storage.cvs_paths)}
