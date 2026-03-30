@@ -1,41 +1,114 @@
-# 🚀 SmartMatch RH AI
+# SmartMatch Backend (MVP v1)
 
-SmartMatch is an AI-powered backend API that matches CVs with job offers using Natural Language Processing (NLP).
+## 🚀 Overview
 
-## 🎯 Features
+SmartMatch is an AI-powered backend service designed to match candidate CVs with job offer descriptions.
 
-- Upload CVs (PDF / text)
-- Add job descriptions
-- Compute matching scores using TF-IDF and cosine similarity
-- Simple and scalable architecture (FastAPI)
+This MVP allows users to:
 
-## 🧠 Tech Stack
+* Upload CVs (PDF format)
+* Submit job descriptions
+* Automatically match candidates to jobs using basic AI logic
 
-- FastAPI
-- Python
-- Scikit-learn
-- Uvicorn
+---
 
-## ⚙️ How it works
+## ⚙️ Tech Stack
 
-1. Upload CVs via API
-2. Add a job description
-3. Run matching endpoint
-4. Get similarity scores (%)
+* **Backend:** FastAPI (Python)
+* **AI / NLP:** Basic text matching (extendable to OpenAI / embeddings)
+* **File Handling:** PDF upload and parsing
+* **API Testing:** Postman / Swagger UI
 
-## 🚧 Current Limitations (MVP)
+---
 
-- CV parsing is basic (text only)
-- Data stored in memory (no database yet)
-- No authentication
+## 📂 Project Structure
 
-## 🔮 Upcoming Features
+```
+smartmatch-backend/
+│
+├── app/
+│   ├── main.py          # Entry point
+│   ├── routes/          # API endpoints
+│   ├── services/        # Business logic
+│   └── models/          # Data models
+│
+├── requirements.txt
+└── README.md
+```
 
-- Skill extraction from CVs
-- AI-powered matching explanation
-- Database integration
-- Frontend dashboard (Angular)
+---
 
-## 📌 Author
+## 🧪 Features (MVP v1)
+
+* Upload CVs via API
+* Submit job descriptions
+* Basic matching logic between CVs and jobs
+* REST API structure ready for scaling
+
+---
+
+## ⚠️ Known Issues
+
+* CV storage is temporary (not persisted properly)
+* Matching algorithm is basic (no embeddings yet)
+* No authentication system
+
+---
+
+## 🎯 Roadmap
+
+* [ ] Fix CV storage (database integration)
+* [ ] Improve matching with embeddings / AI
+* [ ] Add authentication (JWT)
+* [ ] Build frontend (Angular)
+* [ ] Deploy on Azure
+
+---
+
+## ▶️ Run the Project
+
+### 1. Clone repository
+
+```
+git clone https://github.com/your-username/smartmatch-backend.git
+cd smartmatch-backend
+```
+
+### 2. Create virtual environment
+
+```
+python -m venv venv
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
+```
+
+### 3. Install dependencies
+
+```
+pip install -r requirements.txt
+```
+
+### 4. Run server
+
+```
+uvicorn app.main:app --reload
+```
+
+### 5. Open API docs
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## 💡 Vision
+
+This project is the foundation of a scalable SaaS platform for automated recruitment using AI.
+
+---
+
+## 👤 Author
 
 Hajer Attar
+AI Engineer | Data Analyst | Microsoft Certified
